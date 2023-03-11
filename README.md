@@ -2,11 +2,6 @@
 [![GitHub release](https://img.shields.io/github/release/th-hock/EgoSmartHeaterRS485.svg)][GitHub release]
 [![license](https://img.shields.io/github/license/th-hock/EgoSmartHeaterRS485.svg)][license]
 
-
-[GitHub release]:   https://github.com/th-hock/EgoSmartHeaterRS485
-[license]:          LICENSE
-
-
 ## Overview
 Library for controlling E.G.O. RS485 Smart Heaters.
 
