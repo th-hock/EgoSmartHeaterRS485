@@ -43,7 +43,7 @@ The library contains a sketche that demonstrate use of the library. You can find
 
 ## Documentation
 
-The library is documented by a <a href="https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/doc/html/index.html" target="_blank">Doxygen documentation</a>
+The library is documented by a [Doxygen documentation](https://htmlpreview.github.io/?https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/doc/html/index.html)
 
 
 ## Support
