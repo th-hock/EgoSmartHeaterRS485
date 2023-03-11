@@ -1,0 +1,62 @@
+###########################################
+# Syntax Coloring Map for EGO SmartHeater library
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+EgoSmartHeaterRS485	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+EgoSmartHeaterRS485	KEYWORD2
+begin	KEYWORD2
+getErrCode	KEYWORD2
+clearErrCode	KEYWORD2
+getManufacturerId	KEYWORD2
+getProductId	KEYWORD2
+getProductVersion	KEYWORD2
+getFirmwareVersion	KEYWORD2
+getVendorName	KEYWORD2
+getProductName	KEYWORD2
+getSerialNumber	KEYWORD2
+getProductionDate	KEYWORD2
+getRelaisConfiguration	KEYWORD2
+getRelaisCount	KEYWORD2
+getTemperatureMinValue	KEYWORD2
+setTemperatureMinValue	KEYWORD2
+getTemperatureMaxValue	KEYWORD2
+setTemperatureMaxValue	KEYWORD2
+getTemperatureNominalValue	KEYWORD2
+setTemperatureNominalValue	KEYWORD2
+getPowerNominalValue	KEYWORD2
+setPowerNominalValue	KEYWORD2
+getHomeTotalPower	KEYWORD2
+setHomeTotalPower	KEYWORD2
+setRelaisMinOnTime	KEYWORD2
+setRelaisMinOffTime	KEYWORD2
+getRestartCounter	KEYWORD2
+getActualTemperaturePCB	KEYWORD2
+getTotalOperatingSeconds	KEYWORD2
+getErrorCounter	KEYWORD2
+getActualTemperatureBoiler	KEYWORD2
+getActualTemperatureExternalSensor1	KEYWORD2
+getActualTemperatureExternalSensor2	KEYWORD2
+getUserTemperatureNominal	KEYWORD2
+getRelaisStatus	KEYWORD2
+getRelaisOperatingTime	KEYWORD2
+getError	KEYWORD2
+
+###########################################
+# Structures (KEYWORD3)
+###########################################
+RelaisConfigurationData_t	KEYWORD3
+ErrorData_t	KEYWORD3
+RelaisOperatingTime_t	KEYWORD3
+
+###########################################
+# Constants (LITERAL1)
+###########################################
+EGO_SH_RS485_SERIAL_BAUD	LITERAL1
+EGO_SH_RS485_MODBUS_ADR	LITERAL1
