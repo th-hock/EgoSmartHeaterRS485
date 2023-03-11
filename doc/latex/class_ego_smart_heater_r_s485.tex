@@ -1,0 +1,769 @@
+\doxysection{Ego\+Smart\+Heater\+RS485 Class Reference}
+\label{class_ego_smart_heater_r_s485}\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+
+
+{\ttfamily \#include $<$Ego\+Smart\+Heater\+RS485.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Ego\+Smart\+Heater\+RS485} (boolean manual\+Dere=false)
+\begin{DoxyCompactList}\small\item\em Constructor to setup the Smart\+Heater instance in automatic or manual DE/\+RE control. \end{DoxyCompactList}\item 
+\textbf{ Ego\+Smart\+Heater\+RS485} (int dere\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em Constructor to setup the Smart\+Heater instance with enabled manual DE/\+RE control. \end{DoxyCompactList}\item 
+void \textbf{ begin} (Stream \&serial)
+\begin{DoxyCompactList}\small\item\em Function to launch the Smart\+Heater communication using the default modbus ID. \end{DoxyCompactList}\item 
+void \textbf{ begin} (Stream \&serial, uint8\+\_\+t slave)
+\begin{DoxyCompactList}\small\item\em Function to launch the Smart\+Heater communication using the individual modbus ID. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ get\+Err\+Code} (bool \+\_\+clear=false)
+\begin{DoxyCompactList}\small\item\em Function to retreive the latest error code, which occured during the device communication. \end{DoxyCompactList}\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a9f1404c9c71f01f84886d90b4f359bbf}} 
+void {\bfseries clear\+Err\+Code} ()
+\begin{DoxyCompactList}\small\item\em Function to clear the error code store. \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Manufacturer\+Id} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Manufacturer\+ID (0x2000) \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Product\+Id} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Product\+ID (0x2001) \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Product\+Version} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Product\+Version (0x2002) \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Firmware\+Version} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Firmware\+Version (0x2003) \end{DoxyCompactList}\item 
+String \textbf{ get\+Vendor\+Name} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Vendor\+Name (0x2013) \end{DoxyCompactList}\item 
+String \textbf{ get\+Product\+Name} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Product\+Name (0x2023) \end{DoxyCompactList}\item 
+String \textbf{ get\+Serial\+Number} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Serial\+Number (0x2033) \end{DoxyCompactList}\item 
+uint32\+\_\+t \textbf{ get\+Production\+Date} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Production\+Date (0x2035) \end{DoxyCompactList}\item 
+\textbf{ Relais\+Configuration\+Data\+\_\+t} \textbf{ get\+Relais\+Configuration} (int r)
+\begin{DoxyCompactList}\small\item\em Retrieve details for a particular relais (0x1000, 0x1020, 0x1040) \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Relais\+Count} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Relais\+Count (0x1204) \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Temperature\+Min\+Value} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Temperature\+Min\+Value (0x1209). Below this temperature the heater will warm the boiler even if no solar power is available. This can be used by the consumer to ensure a minimum water temperature in the boiler. 0 = Off, otherwise value has to be at least 10K below the actual setting of the Potentiometer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Temperature\+Min\+Value} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure Temperature\+Min\+Value (0x1209). Below this temperature the heater will warm the boiler even if no solar power is available. This can be used by the consumer to ensure a minimum water temperature in the boiler. 0 = Off, otherwise value has to be at least 10K below the actual setting of the Potentiometer. \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Temperature\+Max\+Value} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Temperature\+Max\+Value (0x120A). The maximum specified allowed water temperature which will not exceeded by the smart heater even if the potentiometer is in the maximum position. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Temperature\+Max\+Value} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure Temperature\+Max\+Value (0x120A). The maximum specified allowed water temperature which will not exceeded by the smart heater even if the potentiometer is in the maximum position. \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Temperature\+Nominal\+Value} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Temperature\+Nominal\+Value (0x120B). This is the desired water temperature of the consumer. The special value zero means that the optional hardware potentiometer should be used by the regulator. The value of this potentiometer is available in register “\+User\+Temperatur\+Nominal\+Value”. The maximum value must not be higher than “\+User\+Temperatur\+Nominal\+Value”. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Temperature\+Nominal\+Value} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure Temperature\+Nominal\+Value (0x120B). This is the desired water temperature of the consumer. The special value zero means that the optional hardware potentiometer should be used by the regulator. The value of this potentiometer is available in register “\+User\+Temperatur\+Nominal\+Value”. The maximum value must not be higher than “\+User\+Temperatur\+Nominal\+Value”. \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+Power\+Nominal\+Value} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Power\+Nominal\+Value (0x1300). This is the desired power value which the heater should use to heat the boiler. The special value -\/1 means, that the heater should use the Home\+Total\+Power value and use as much power as possible. When writing this value the heater will match the desired value itself to the available relais and constraints (minimum switch on times etc.). Therefore this register is threat on a best-\/effort basis. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Power\+Nominal\+Value} (int16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure Power\+Nominal\+Value (0x1300). This is the desired power value which the heater should use to heat the boiler. The special value -\/1 means, that the heater should use the Home\+Total\+Power value and use as much power as possible. When writing this value the heater will match the desired value itself to the available relais and constraints (minimum switch on times etc.). Therefore this register is threat on a best-\/effort basis. \end{DoxyCompactList}\item 
+int32\+\_\+t \textbf{ get\+Home\+Total\+Power} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Home\+Total\+Power (0x1301). This register is written by the smart meter and contains the total power consumption/generation of the home/flat. When the value is negative then the home is feeding power back to the utilities, thus the heater should consume energy to heat up the boiler. When the value is positive then the home consumes energy from the utilities and the heater should stop heating. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Home\+Total\+Power} (int32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Retrieve Home\+Total\+Power (0x1301). This register is written by the smart meter and contains the total power consumption/generation of the home/flat. When the value is negative then the home is feeding power back to the utilities, thus the heater should consume energy to heat up the boiler. When the value is positive then the home consumes energy from the utilities and the heater should stop heating. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Relais\+Min\+On\+Time} (int r, uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure relais Min\+On\+Time for a specific relais (0x1005, 0x1025, 0x1045). This field defines the minimum time the relais remains switched on. \end{DoxyCompactList}\item 
+uint8\+\_\+t \textbf{ set\+Relais\+Min\+Off\+Time} (int r, uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Configure relais Min\+Off\+Time for a specific relais (0x1006, 0x1026, 0x1046). This field defines the minimum time the relais remains switched off. \end{DoxyCompactList}\item 
+uint32\+\_\+t \textbf{ get\+Restart\+Counter} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Restart\+Counter (0x1202) This is mainly used during development. \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+Actual\+Temperature\+PCB} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Actual\+Temperatur\+PCB (0x1205) This is the actual temperature of the heater’s control PCB. If the PCB temperature exceed this max. value the heater switches off. 10K below this temperature the heater swichtes on. \end{DoxyCompactList}\item 
+uint32\+\_\+t \textbf{ get\+Total\+Operating\+Seconds} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Total\+Operating\+Seconds (0x1400). \end{DoxyCompactList}\item 
+uint32\+\_\+t \textbf{ get\+Error\+Counter} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Error\+Counter (0x1402) \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+Actual\+Temperature\+Boiler} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Actual\+Temperatur\+Boiler (0x1404) \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+Actual\+Temperature\+External\+Sensor1} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Actual\+Temperatur\+External\+Sensor1 (0x1405) This is the actual temperature of an (optional) first external temperature sensor. Special values\+: 0x8000 – no sensor can be attached to this heater model 0x8001 – no sensor attached 0x8002 – sensor present but malfunctioning. \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+Actual\+Temperature\+External\+Sensor2} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Actual\+Temperatur\+External\+Sensor2 (0x1406) This is the actual temperature of an (optional) second external temperature sensor. Special values\+: 0x8000 – no sensor can be attached to this heater model 0x8001 – no sensor attached 0x8002 – sensor present but malfunctioning. \end{DoxyCompactList}\item 
+int16\+\_\+t \textbf{ get\+User\+Temperature\+Nominal} ()
+\begin{DoxyCompactList}\small\item\em Retrieve User\+Temperatur\+Nominal\+Value (0x1407) This value corresponds to the position of an (optional) potentiometer where the consumer can select a desired boiler temperature. \end{DoxyCompactList}\item 
+uint16\+\_\+t \textbf{ get\+Relais\+Status} ()
+\begin{DoxyCompactList}\small\item\em Retrieve Relais\+Status (0x1408) This bitfield reflects the switching state of the heater’s internal relais\+: 0x0000\+: all relais are switched off 0x0001\+: only relais 1 is switched on 0x0002\+: only relais 2 is switched on 0x0004\+: only relais 3 is switched on 0x0005\+: relais 1 + 3 is switched on. \end{DoxyCompactList}\item 
+\textbf{ Relais\+Operating\+Time\+\_\+t} \textbf{ get\+Relais\+Operating\+Time} ()
+\begin{DoxyCompactList}\small\item\em Retrieve the operating times of all relais (0x1409, 0x140B, 0x140D) \end{DoxyCompactList}\item 
+\textbf{ Error\+Data\+\_\+t} \textbf{ get\+Error} (int i)
+\begin{DoxyCompactList}\small\item\em Retrieve error struct (0x1500 -\/ 0x1526) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a01cc48ebb2f73920975be1afaae408be}} 
+boolean {\bfseries manual\+Dere}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a7e1bfc6b5a4ca37fea900c280f7cad0e}} 
+float {\bfseries get\+Modbus\+Float} (uint16\+\_\+t data[2])
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a355c4b907f07a265ccfe37877fba031c}} 
+uint32\+\_\+t {\bfseries get\+Modbus\+Uint32} (uint16\+\_\+t data[2])
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a9e93c21271ab0496ca72125caf623c96}} 
+int32\+\_\+t {\bfseries get\+Modbus\+Int32} (uint16\+\_\+t data[2])
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a83ce5341a762ffff4949735d782b2474}} 
+String {\bfseries get\+Modbus\+String32} (uint16\+\_\+t data[16])
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a63f622b8efaea971aa1e5cb44d1fe459}} 
+Modbus\+Master {\bfseries \+\_\+node}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ac6ccdaf1612a6f194ca3fa7610d97716}} 
+uint8\+\_\+t {\bfseries \+\_\+result} = \+\_\+node.\+ku8\+MBSuccess
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a58a34b611dec07c8d0c2e9fd955758b7}} 
+static const uint16\+\_\+t {\bfseries Register\+Manufacturer\+Id} = 0x2000
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a3ee660a2322de7a1ecf97c7ce06cd887}} 
+static const uint16\+\_\+t {\bfseries Register\+Product\+Id} = 0x2001
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a77d5d8fe4240cd48a474092bb6b85aed}} 
+static const uint16\+\_\+t {\bfseries Register\+Product\+Version} = 0x2002
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ae9b9971c5e17f521e093bee13fc572cf}} 
+static const uint16\+\_\+t {\bfseries Register\+Firmware\+Version} = 0x2003
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a9c6c067daa090a764de33dd0250e948d}} 
+static const uint16\+\_\+t {\bfseries Register\+Vendor\+Name} = 0x2004
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a6739748e1b592e563d0a0ea18831d8f3}} 
+static const uint16\+\_\+t {\bfseries Register\+Product\+Name} = 0x2014
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a944c7814b9defe1c24775b6e179f2232}} 
+static const uint16\+\_\+t {\bfseries Register\+Serial\+Number} = 0x2024
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a436d84ed0c336cbf532fec80a3e057ca}} 
+static const uint16\+\_\+t {\bfseries Register\+Production\+Date} = 0x2034
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ac5eac779f563c4ef503ac273978a1063}} 
+static constexpr uint16\+\_\+t {\bfseries Register\+Relais\+Configuration} [3] = \{0x1000,0x1020,0x1040\}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ac2ecdd50c18c76b749adee8b99e89e71}} 
+static const uint16\+\_\+t {\bfseries Register\+Relais\+Count} = 0x1204
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ad2f3fbba70f6803a57e3ef207ca6c9c1}} 
+static const uint16\+\_\+t {\bfseries Register\+Temperature\+Min\+Value} = 0x1209
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_aff072a9f71f2da771df3714aec7292a0}} 
+static const uint16\+\_\+t {\bfseries Register\+Temperature\+Max\+Value} = 0x120A
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_acb2c13bf814501049958a17445387f7c}} 
+static const uint16\+\_\+t {\bfseries Register\+Temperature\+Nominal\+Value} = 0x120B
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a643e99a775c772a4b35369f500d120e3}} 
+static const uint16\+\_\+t {\bfseries Register\+Power\+Nominal\+Value} = 0x1300
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_adee82614d569162fc179eb94bdc5fe0c}} 
+static const uint16\+\_\+t {\bfseries Register\+Home\+Total\+Power} = 0x1301
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a976018f28a2c7385ab161dade60a2b79}} 
+static const uint16\+\_\+t {\bfseries Register\+User\+Temperature\+Nominal} = 0x1407
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a2086460e7d7089b3213542acbf638ee0}} 
+static const uint16\+\_\+t {\bfseries Register\+Restart\+Counter} = 0x1202
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a852747e9de3a7f16ebe44d8346711c2a}} 
+static const uint16\+\_\+t {\bfseries Register\+Actual\+Temperature\+PCB} = 0x1205
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_abde2c98df91c54d067f8534e1bfaf95b}} 
+static const uint16\+\_\+t {\bfseries Register\+Total\+Operating\+Seconds} = 0x1400
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_abf37204dbcd4510e7db4d3bac6f35c4f}} 
+static const uint16\+\_\+t {\bfseries Register\+Error\+Counter} = 0x1402
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ab0b61d05acfb1d91a34c9c1162abc9d0}} 
+static const uint16\+\_\+t {\bfseries Register\+Actual\+Temperature\+Boiler} = 0x1404
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a82eaff22e077a503aa7e0d33b6c197a0}} 
+static const uint16\+\_\+t {\bfseries Register\+Actual\+Temperatur\+External\+Sensor1} = 0x1405
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a1e19cf91145b262663abaa609118f54d}} 
+static const uint16\+\_\+t {\bfseries Register\+Actual\+Temperatur\+External\+Sensor2} = 0x1406
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_ad2ad71279ee2189aa62d359c6b30807e}} 
+static const uint16\+\_\+t {\bfseries Register\+Relais\+Status} = 0x1408
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a7901c9057f4332c970316d5502fc3f0c}} 
+static constexpr uint16\+\_\+t {\bfseries Register\+Relais\+Operating\+Time} [3] = \{0x1409,0x140B,0x140D\}
+\item 
+\mbox{\label{class_ego_smart_heater_r_s485_a95b36c74c237eead73d0e2dd33aedadc}} 
+static constexpr uint16\+\_\+t {\bfseries Register\+Error\+Data} [10] = \{0x1500,0x1504,0x1508,0x150C,0x1510,0x1514,0x1518,0x151C,0x1520,0x1524\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+E.\+G.\+O. Smart Heater control Controls Smart\+Heater product code 29.\+65335.\+000 and RS-\/485 module for Arduino (MAX485) on multiple architectures 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_ego_smart_heater_r_s485_a5c42df9b3185c4f029f4d34948258d79}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{EgoSmartHeaterRS485()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ego\+Smart\+Heater\+RS485\+::\+Ego\+Smart\+Heater\+RS485 (\begin{DoxyParamCaption}\item[{boolean}]{manual\+Dere = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Constructor to setup the Smart\+Heater instance in automatic or manual DE/\+RE control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manual\+Dere} & is a boolean to enable or disable manual DE/\+RE control (default\+: false). \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_ego_smart_heater_r_s485_aa20bd3c73337301fe0d6bf499ad56d8c}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{EgoSmartHeaterRS485()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ego\+Smart\+Heater\+RS485\+::\+Ego\+Smart\+Heater\+RS485 (\begin{DoxyParamCaption}\item[{int}]{dere\+\_\+pin }\end{DoxyParamCaption})}
+
+
+
+Constructor to setup the Smart\+Heater instance with enabled manual DE/\+RE control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dere\+\_\+pin} & is number of the PIN which shall be used to control the DE/\+RE input of the MAX485 board. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_ego_smart_heater_r_s485_aab4b3cd1c3620c73652953a89921a461}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!begin@{begin}}
+\index{begin@{begin}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{begin()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ego\+Smart\+Heater\+RS485\+::begin (\begin{DoxyParamCaption}\item[{Stream \&}]{serial }\end{DoxyParamCaption})}
+
+
+
+Function to launch the Smart\+Heater communication using the default modbus ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & is a reference to the instance of serial interface, to which the MAX485 is connected. Might be HW-\/or SW serial. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_ego_smart_heater_r_s485_a9ff83ad391f64c0919a7137f4de7f24b}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!begin@{begin}}
+\index{begin@{begin}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{begin()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Ego\+Smart\+Heater\+RS485\+::begin (\begin{DoxyParamCaption}\item[{Stream \&}]{serial,  }\item[{uint8\+\_\+t}]{slave }\end{DoxyParamCaption})}
+
+
+
+Function to launch the Smart\+Heater communication using the individual modbus ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & is a reference to the instance of serial interface, to which the MAX485 is connected. Might be HW-\/or SW serial. \\
+\hline
+{\em slave} & specifies the modbus address of the slave device to communicate with. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_ego_smart_heater_r_s485_ae45059e877b1a3c7e2ddbbd113c7f4f8}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getActualTemperatureBoiler@{getActualTemperatureBoiler}}
+\index{getActualTemperatureBoiler@{getActualTemperatureBoiler}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getActualTemperatureBoiler()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Actual\+Temperature\+Boiler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Actual\+Temperatur\+Boiler (0x1404) 
+
+\begin{DoxyReturn}{Returns}
+Actual water temperature in the boiler in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a4fc53f29a60e7ef718cfadc7ec18691f}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getActualTemperatureExternalSensor1@{getActualTemperatureExternalSensor1}}
+\index{getActualTemperatureExternalSensor1@{getActualTemperatureExternalSensor1}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getActualTemperatureExternalSensor1()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Actual\+Temperature\+External\+Sensor1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Actual\+Temperatur\+External\+Sensor1 (0x1405) This is the actual temperature of an (optional) first external temperature sensor. Special values\+: 0x8000 – no sensor can be attached to this heater model 0x8001 – no sensor attached 0x8002 – sensor present but malfunctioning. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a1592524379b380aad9410d6fd5769a76}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getActualTemperatureExternalSensor2@{getActualTemperatureExternalSensor2}}
+\index{getActualTemperatureExternalSensor2@{getActualTemperatureExternalSensor2}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getActualTemperatureExternalSensor2()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Actual\+Temperature\+External\+Sensor2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Actual\+Temperatur\+External\+Sensor2 (0x1406) This is the actual temperature of an (optional) second external temperature sensor. Special values\+: 0x8000 – no sensor can be attached to this heater model 0x8001 – no sensor attached 0x8002 – sensor present but malfunctioning. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a2e975f79e85cc9f960212e933097cc9e}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getActualTemperaturePCB@{getActualTemperaturePCB}}
+\index{getActualTemperaturePCB@{getActualTemperaturePCB}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getActualTemperaturePCB()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Actual\+Temperature\+PCB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Actual\+Temperatur\+PCB (0x1205) This is the actual temperature of the heater’s control PCB. If the PCB temperature exceed this max. value the heater switches off. 10K below this temperature the heater swichtes on. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ac143bbcedd6bc681febc911850c87fa7}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getErrCode@{getErrCode}}
+\index{getErrCode@{getErrCode}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getErrCode()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Err\+Code (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+clear = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Function to retreive the latest error code, which occured during the device communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+clear} & indicates if the error code shall be cleared implicitly after reading (default\+: false). \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_ego_smart_heater_r_s485_ad97d5e75e1a79760e2b42b508ff2df19}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getError@{getError}}
+\index{getError@{getError}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getError()}
+{\footnotesize\ttfamily \textbf{ Error\+Data\+\_\+t} Ego\+Smart\+Heater\+RS485\+::get\+Error (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retrieve error struct (0x1500 -\/ 0x1526) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & is the number of error message (0 -\/ 9) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct which contains Operating\+Hour, Operating\+Second and Error\+Code 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a103f50879886afa634c7dd9c13874ee3}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getErrorCounter@{getErrorCounter}}
+\index{getErrorCounter@{getErrorCounter}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getErrorCounter()}
+{\footnotesize\ttfamily uint32\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Error\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Error\+Counter (0x1402) 
+
+\begin{DoxyReturn}{Returns}
+Number of errors 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_accdd7284ab4f115c7251219c17439bef}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getFirmwareVersion@{getFirmwareVersion}}
+\index{getFirmwareVersion@{getFirmwareVersion}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getFirmwareVersion()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Firmware\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Firmware\+Version (0x2003) 
+
+\begin{DoxyReturn}{Returns}
+Firmware-\/\+Revision (e.\+g. 0x64 = 100 = 1.\+00) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a878792e633fa468f89b87b24bcddb085}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getHomeTotalPower@{getHomeTotalPower}}
+\index{getHomeTotalPower@{getHomeTotalPower}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getHomeTotalPower()}
+{\footnotesize\ttfamily int32\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Home\+Total\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Home\+Total\+Power (0x1301). This register is written by the smart meter and contains the total power consumption/generation of the home/flat. When the value is negative then the home is feeding power back to the utilities, thus the heater should consume energy to heat up the boiler. When the value is positive then the home consumes energy from the utilities and the heater should stop heating. 
+
+\begin{DoxyReturn}{Returns}
+Power in Watts. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_add09099ccec93e3ba487e4a553a5b77f}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getManufacturerId@{getManufacturerId}}
+\index{getManufacturerId@{getManufacturerId}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getManufacturerId()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Manufacturer\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Manufacturer\+ID (0x2000) 
+
+\begin{DoxyReturn}{Returns}
+For EGO Smart\+Heater always\+: 0x14ef 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a3f06222df03712d7f37a5f1940a0602a}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getPowerNominalValue@{getPowerNominalValue}}
+\index{getPowerNominalValue@{getPowerNominalValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getPowerNominalValue()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Power\+Nominal\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Power\+Nominal\+Value (0x1300). This is the desired power value which the heater should use to heat the boiler. The special value -\/1 means, that the heater should use the Home\+Total\+Power value and use as much power as possible. When writing this value the heater will match the desired value itself to the available relais and constraints (minimum switch on times etc.). Therefore this register is threat on a best-\/effort basis. 
+
+\begin{DoxyReturn}{Returns}
+Power in Watts. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ae61f4e8ccf16bf37c2f664a83dd7afa1}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getProductId@{getProductId}}
+\index{getProductId@{getProductId}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getProductId()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Product\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Product\+ID (0x2001) 
+
+\begin{DoxyReturn}{Returns}
+Indicates the E.\+G.\+O. product ID 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a6fd54dfe3e9232b448d2d05da174eadc}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getProductionDate@{getProductionDate}}
+\index{getProductionDate@{getProductionDate}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getProductionDate()}
+{\footnotesize\ttfamily uint32\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Production\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Production\+Date (0x2035) 
+
+\begin{DoxyReturn}{Returns}
+Date of when device was assembled. This field is BCD-\/encoded and thus can be interpreted as a string with a fixed length. (Example\+: 0x20140515) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a94b9f6f22331e203f15a577e283813df}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getProductName@{getProductName}}
+\index{getProductName@{getProductName}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getProductName()}
+{\footnotesize\ttfamily String Ego\+Smart\+Heater\+RS485\+::get\+Product\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Product\+Name (0x2023) 
+
+\begin{DoxyReturn}{Returns}
+Device name as a string (Example\+: Smart Heater SM1000) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a07e6b9fc78fd3b558254442c258340d9}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getProductVersion@{getProductVersion}}
+\index{getProductVersion@{getProductVersion}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getProductVersion()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Product\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Product\+Version (0x2002) 
+
+\begin{DoxyReturn}{Returns}
+Indicates the E.\+G.\+O. variant ID 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a1dc50440659ac877be88e7013153dec5}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getRelaisConfiguration@{getRelaisConfiguration}}
+\index{getRelaisConfiguration@{getRelaisConfiguration}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getRelaisConfiguration()}
+{\footnotesize\ttfamily \textbf{ Relais\+Configuration\+Data\+\_\+t} Ego\+Smart\+Heater\+RS485\+::get\+Relais\+Configuration (\begin{DoxyParamCaption}\item[{int}]{r }\end{DoxyParamCaption})}
+
+
+
+Retrieve details for a particular relais (0x1000, 0x1020, 0x1040) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Number} & of the relais to query (0\+: 500W, 1\+: 1000W, 2\+: 2000W) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Structure which contains Actual\+Power, Operating\+Seconds, Switching\+Cycles, Min\+On\+Time, Min\+Off\+Time 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a5709e2b1954c7b147e0907951e25755e}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getRelaisCount@{getRelaisCount}}
+\index{getRelaisCount@{getRelaisCount}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getRelaisCount()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Relais\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Relais\+Count (0x1204) 
+
+\begin{DoxyReturn}{Returns}
+Number of relais available in this product. Should be 3. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a840d8f08db223aef19685a8fd6d1789e}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getRelaisOperatingTime@{getRelaisOperatingTime}}
+\index{getRelaisOperatingTime@{getRelaisOperatingTime}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getRelaisOperatingTime()}
+{\footnotesize\ttfamily \textbf{ Relais\+Operating\+Time\+\_\+t} Ego\+Smart\+Heater\+RS485\+::get\+Relais\+Operating\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve the operating times of all relais (0x1409, 0x140B, 0x140D) 
+
+\begin{DoxyReturn}{Returns}
+Counter of operating seconds for the three relais. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a7bb9b8d0b608b1893c91510675894fe7}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getRelaisStatus@{getRelaisStatus}}
+\index{getRelaisStatus@{getRelaisStatus}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getRelaisStatus()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Relais\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Relais\+Status (0x1408) This bitfield reflects the switching state of the heater’s internal relais\+: 0x0000\+: all relais are switched off 0x0001\+: only relais 1 is switched on 0x0002\+: only relais 2 is switched on 0x0004\+: only relais 3 is switched on 0x0005\+: relais 1 + 3 is switched on. 
+
+\begin{DoxyReturn}{Returns}
+Relais Status 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a454c4708932fdc7ffce354f3debd2a38}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getRestartCounter@{getRestartCounter}}
+\index{getRestartCounter@{getRestartCounter}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getRestartCounter()}
+{\footnotesize\ttfamily uint32\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Restart\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Restart\+Counter (0x1202) This is mainly used during development. 
+
+\begin{DoxyReturn}{Returns}
+Number of the restarts of the smart heater’s internal controller. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a05a1e90c7c739dc1be2e57537ccf2634}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getSerialNumber@{getSerialNumber}}
+\index{getSerialNumber@{getSerialNumber}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getSerialNumber()}
+{\footnotesize\ttfamily String Ego\+Smart\+Heater\+RS485\+::get\+Serial\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Serial\+Number (0x2033) 
+
+\begin{DoxyReturn}{Returns}
+Serial number as a string (Example\+: 30380912332211) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ae7ee7eedfbd040a1748dce48e4aedf12}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getTemperatureMaxValue@{getTemperatureMaxValue}}
+\index{getTemperatureMaxValue@{getTemperatureMaxValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getTemperatureMaxValue()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Temperature\+Max\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Temperature\+Max\+Value (0x120A). The maximum specified allowed water temperature which will not exceeded by the smart heater even if the potentiometer is in the maximum position. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a23e2b426121e83f7e9b57f93e04ad0ac}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getTemperatureMinValue@{getTemperatureMinValue}}
+\index{getTemperatureMinValue@{getTemperatureMinValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getTemperatureMinValue()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Temperature\+Min\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Temperature\+Min\+Value (0x1209). Below this temperature the heater will warm the boiler even if no solar power is available. This can be used by the consumer to ensure a minimum water temperature in the boiler. 0 = Off, otherwise value has to be at least 10K below the actual setting of the Potentiometer. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_af6f75ef1a62e8ef0b3eb61f67fc7f16b}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getTemperatureNominalValue@{getTemperatureNominalValue}}
+\index{getTemperatureNominalValue@{getTemperatureNominalValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getTemperatureNominalValue()}
+{\footnotesize\ttfamily uint16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Temperature\+Nominal\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Temperature\+Nominal\+Value (0x120B). This is the desired water temperature of the consumer. The special value zero means that the optional hardware potentiometer should be used by the regulator. The value of this potentiometer is available in register “\+User\+Temperatur\+Nominal\+Value”. The maximum value must not be higher than “\+User\+Temperatur\+Nominal\+Value”. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a3c6231ee910cd2f88d918a25e999aec9}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getTotalOperatingSeconds@{getTotalOperatingSeconds}}
+\index{getTotalOperatingSeconds@{getTotalOperatingSeconds}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getTotalOperatingSeconds()}
+{\footnotesize\ttfamily uint32\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+Total\+Operating\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Total\+Operating\+Seconds (0x1400). 
+
+\begin{DoxyReturn}{Returns}
+Total operating seconds of the smart heater. 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_af525887f4c878aae7414fdc4b8c437ff}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getUserTemperatureNominal@{getUserTemperatureNominal}}
+\index{getUserTemperatureNominal@{getUserTemperatureNominal}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getUserTemperatureNominal()}
+{\footnotesize\ttfamily int16\+\_\+t Ego\+Smart\+Heater\+RS485\+::get\+User\+Temperature\+Nominal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve User\+Temperatur\+Nominal\+Value (0x1407) This value corresponds to the position of an (optional) potentiometer where the consumer can select a desired boiler temperature. 
+
+\begin{DoxyReturn}{Returns}
+Temperature in °C 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ab5c8a3bbcdd9260c6578a2ce81ace78e}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!getVendorName@{getVendorName}}
+\index{getVendorName@{getVendorName}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{getVendorName()}
+{\footnotesize\ttfamily String Ego\+Smart\+Heater\+RS485\+::get\+Vendor\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieve Vendor\+Name (0x2013) 
+
+\begin{DoxyReturn}{Returns}
+Vendor name as a string (Example\+: E.\+G.\+O.) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ac9d118477b3d34a238c3b218839392d9}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setHomeTotalPower@{setHomeTotalPower}}
+\index{setHomeTotalPower@{setHomeTotalPower}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setHomeTotalPower()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Home\+Total\+Power (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Retrieve Home\+Total\+Power (0x1301). This register is written by the smart meter and contains the total power consumption/generation of the home/flat. When the value is negative then the home is feeding power back to the utilities, thus the heater should consume energy to heat up the boiler. When the value is positive then the home consumes energy from the utilities and the heater should stop heating. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is the power in Watts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ad9b5259322c4531f58a4eb1c9bbdcad9}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setPowerNominalValue@{setPowerNominalValue}}
+\index{setPowerNominalValue@{setPowerNominalValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setPowerNominalValue()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Power\+Nominal\+Value (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure Power\+Nominal\+Value (0x1300). This is the desired power value which the heater should use to heat the boiler. The special value -\/1 means, that the heater should use the Home\+Total\+Power value and use as much power as possible. When writing this value the heater will match the desired value itself to the available relais and constraints (minimum switch on times etc.). Therefore this register is threat on a best-\/effort basis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is the power in Watts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_addc8e25a97c3eb5b8fcd70d276c5a386}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setRelaisMinOffTime@{setRelaisMinOffTime}}
+\index{setRelaisMinOffTime@{setRelaisMinOffTime}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setRelaisMinOffTime()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Relais\+Min\+Off\+Time (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure relais Min\+Off\+Time for a specific relais (0x1006, 0x1026, 0x1046). This field defines the minimum time the relais remains switched off. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Number} & of the relais to query (0\+: 500W, 1\+: 1000W, 2\+: 2000W) \\
+\hline
+{\em Minimum} & on-\/time in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a4109e2c50350168be94cb719f9613864}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setRelaisMinOnTime@{setRelaisMinOnTime}}
+\index{setRelaisMinOnTime@{setRelaisMinOnTime}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setRelaisMinOnTime()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Relais\+Min\+On\+Time (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure relais Min\+On\+Time for a specific relais (0x1005, 0x1025, 0x1045). This field defines the minimum time the relais remains switched on. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Number} & of the relais to query (0\+: 500W, 1\+: 1000W, 2\+: 2000W) \\
+\hline
+{\em Minimum} & on-\/time in seconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_ad766721cdfa9f78c3c69d75ae9ae43d5}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setTemperatureMaxValue@{setTemperatureMaxValue}}
+\index{setTemperatureMaxValue@{setTemperatureMaxValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setTemperatureMaxValue()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Temperature\+Max\+Value (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure Temperature\+Max\+Value (0x120A). The maximum specified allowed water temperature which will not exceeded by the smart heater even if the potentiometer is in the maximum position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is the Temperature in °C to be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a317fde737d2f98d6f0bd8ffd35135c4f}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setTemperatureMinValue@{setTemperatureMinValue}}
+\index{setTemperatureMinValue@{setTemperatureMinValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setTemperatureMinValue()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Temperature\+Min\+Value (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure Temperature\+Min\+Value (0x1209). Below this temperature the heater will warm the boiler even if no solar power is available. This can be used by the consumer to ensure a minimum water temperature in the boiler. 0 = Off, otherwise value has to be at least 10K below the actual setting of the Potentiometer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is the Temperature in °C to be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+\mbox{\label{class_ego_smart_heater_r_s485_a013af2e016be7b0f553af37dfc59c61b}} 
+\index{EgoSmartHeaterRS485@{EgoSmartHeaterRS485}!setTemperatureNominalValue@{setTemperatureNominalValue}}
+\index{setTemperatureNominalValue@{setTemperatureNominalValue}!EgoSmartHeaterRS485@{EgoSmartHeaterRS485}}
+\doxysubsubsection{setTemperatureNominalValue()}
+{\footnotesize\ttfamily uint8\+\_\+t Ego\+Smart\+Heater\+RS485\+::set\+Temperature\+Nominal\+Value (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Configure Temperature\+Nominal\+Value (0x120B). This is the desired water temperature of the consumer. The special value zero means that the optional hardware potentiometer should be used by the regulator. The value of this potentiometer is available in register “\+User\+Temperatur\+Nominal\+Value”. The maximum value must not be higher than “\+User\+Temperatur\+Nominal\+Value”. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is the Temperature in °C to be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result code of the modbus write operation (see Mod\+Bus libary) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/thomas/\+Documents/\+Arduino/libraries/\+Ego\+Smart\+Heater\+RS485/src/\textbf{ Ego\+Smart\+Heater\+RS485.\+h}\item 
+C\+:/\+Users/thomas/\+Documents/\+Arduino/libraries/\+Ego\+Smart\+Heater\+RS485/src/\textbf{ Ego\+Smart\+Heater\+RS485.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\doxysection{Ego\+Smart\+Heater\+RS485.\+h}
+\label{_ego_smart_heater_r_s485_8h_source}\index{C:/Users/thomas/Documents/Arduino/libraries/EgoSmartHeaterRS485/src/EgoSmartHeaterRS485.h@{C:/Users/thomas/Documents/Arduino/libraries/EgoSmartHeaterRS485/src/EgoSmartHeaterRS485.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ EGO\_SH\_RS485\_h}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ EGO\_SH\_RS485\_h}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <ModbusMaster.h>}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ EGO\_SH\_RS485\_SERIAL\_BAUD\ 19200}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ EGO\_SH\_RS485\_MODBUS\_ADR\ 247\ \ \ \ \ }\textcolor{comment}{//\ Modbus\ address\ of\ EGO\ Smart\ Heaters}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }RelaisConfigurationData\_t}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ uint16\_t\ ActualPower;}
+\DoxyCodeLine{00035\ \ \ uint32\_t\ OperatingSeconds;}
+\DoxyCodeLine{00036\ \ \ uint32\_t\ SwitchingCycles;}
+\DoxyCodeLine{00037\ \ \ uint16\_t\ MinOnTime;}
+\DoxyCodeLine{00038\ \ \ uint16\_t\ MinOffTime;}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }ErrorData\_t}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ uint32\_t\ OperatingHour;}
+\DoxyCodeLine{00046\ \ \ uint16\_t\ OperatingSecond;}
+\DoxyCodeLine{00047\ \ \ uint16\_t\ ErrorCode;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{struct\ }RelaisOperatingTime\_t}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ uint32\_t\ OperatingSeconds1;}
+\DoxyCodeLine{00055\ \ \ uint32\_t\ OperatingSeconds2;}
+\DoxyCodeLine{00056\ \ \ uint32\_t\ OperatingSeconds3;}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00063\ \textcolor{comment}{}\textcolor{keyword}{class\ }EgoSmartHeaterRS485}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ EgoSmartHeaterRS485(\textcolor{keywordtype}{boolean}\ manualDere\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00071\ \ \ EgoSmartHeaterRS485(\textcolor{keywordtype}{int}\ dere\_pin);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ begin(Stream\ \&serial);}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ begin(Stream\ \&serial,\ uint8\_t\ slave);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00083\ \ \ uint8\_t\ getErrCode(\textcolor{keywordtype}{bool}\ \_clear\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{void}\ clearErrCode();}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{boolean}\ manualDere;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//Basic\ Device\ Information}}
+\DoxyCodeLine{00091\ \textcolor{comment}{}\ \ uint16\_t\ getManufacturerId();}
+\DoxyCodeLine{00094\ \ \ uint16\_t\ getProductId();}
+\DoxyCodeLine{00097\ \ \ uint16\_t\ getProductVersion();}
+\DoxyCodeLine{00100\ \ \ uint16\_t\ getFirmwareVersion();}
+\DoxyCodeLine{00103\ \ \ String\ getVendorName();}
+\DoxyCodeLine{00106\ \ \ String\ getProductName();}
+\DoxyCodeLine{00109\ \ \ String\ getSerialNumber();}
+\DoxyCodeLine{00112\ \ \ uint32\_t\ getProductionDate();}
+\DoxyCodeLine{00116\ \ \ RelaisConfigurationData\_t\ getRelaisConfiguration(\textcolor{keywordtype}{int}\ r);}
+\DoxyCodeLine{00119\ \ \ uint16\_t\ getRelaisCount();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \textcolor{comment}{//\ Configuration\ Information}}
+\DoxyCodeLine{00125\ \textcolor{comment}{}\ \ uint16\_t\ getTemperatureMinValue();}
+\DoxyCodeLine{00130\ \ \ uint8\_t\ setTemperatureMinValue(uint16\_t\ value);}
+\DoxyCodeLine{00133\ \ \ uint16\_t\ getTemperatureMaxValue();}
+\DoxyCodeLine{00138\ \ \ uint8\_t\ setTemperatureMaxValue(uint16\_t\ value);}
+\DoxyCodeLine{00142\ \ \ uint16\_t\ getTemperatureNominalValue();}
+\DoxyCodeLine{00147\ \ \ uint8\_t\ setTemperatureNominalValue(uint16\_t\ value);}
+\DoxyCodeLine{00151\ \ \ int16\_t\ getPowerNominalValue();}
+\DoxyCodeLine{00156\ \ \ uint8\_t\ setPowerNominalValue(int16\_t\ value);}
+\DoxyCodeLine{00159\ \ \ int32\_t\ getHomeTotalPower();}
+\DoxyCodeLine{00164\ \ \ uint8\_t\ setHomeTotalPower(int32\_t\ value);}
+\DoxyCodeLine{00170\ \ \ uint8\_t\ setRelaisMinOnTime(\textcolor{keywordtype}{int}\ r,\ uint16\_t\ value);}
+\DoxyCodeLine{00176\ \ \ uint8\_t\ setRelaisMinOffTime(\textcolor{keywordtype}{int}\ r,\ uint16\_t\ value);}
+\DoxyCodeLine{00177\ \ \ }
+\DoxyCodeLine{00178\ \ \ \textcolor{comment}{//\ Operating\ Information}}
+\DoxyCodeLine{00182\ \textcolor{comment}{}\ \ uint32\_t\ getRestartCounter();}
+\DoxyCodeLine{00186\ \ \ int16\_t\ getActualTemperaturePCB();}
+\DoxyCodeLine{00189\ \ \ uint32\_t\ getTotalOperatingSeconds();}
+\DoxyCodeLine{00192\ \ \ uint32\_t\ getErrorCounter();}
+\DoxyCodeLine{00195\ \ \ int16\_t\ getActualTemperatureBoiler();}
+\DoxyCodeLine{00202\ \ \ int16\_t\ getActualTemperatureExternalSensor1();}
+\DoxyCodeLine{00209\ \ \ int16\_t\ getActualTemperatureExternalSensor2();}
+\DoxyCodeLine{00213\ \ \ int16\_t\ getUserTemperatureNominal();}
+\DoxyCodeLine{00222\ \ \ uint16\_t\ getRelaisStatus();}
+\DoxyCodeLine{00225\ \ \ RelaisOperatingTime\_t\ getRelaisOperatingTime();}
+\DoxyCodeLine{00229\ \ \ ErrorData\_t\ getError(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00232\ \ \ \textcolor{comment}{//\ instantiate\ ModbusMaster\ object}}
+\DoxyCodeLine{00233\ \ \ ModbusMaster\ \_node;}
+\DoxyCodeLine{00234\ \ \ uint8\_t\ \_result\ =\ \_node.ku8MBSuccess;\ \textcolor{comment}{//\ Value:\ 0=Success,\ 2=Illegal\ Address,\ 3=Illegal\ Value}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \textcolor{keywordtype}{float}\ getModbusFloat(uint16\_t\ data[2]);}
+\DoxyCodeLine{00237\ \ \ uint32\_t\ getModbusUint32(uint16\_t\ data[2]);}
+\DoxyCodeLine{00238\ \ \ int32\_t\ getModbusInt32(uint16\_t\ data[2]);}
+\DoxyCodeLine{00239\ \ \ String\ getModbusString32(uint16\_t\ data[16]);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \textcolor{comment}{//Basic\ Device\ Information}}
+\DoxyCodeLine{00242\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterManufacturerId\ =\ 0x2000;}
+\DoxyCodeLine{00243\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterProductId\ =\ 0x2001;}
+\DoxyCodeLine{00244\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterProductVersion\ =\ 0x2002;}
+\DoxyCodeLine{00245\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterFirmwareVersion\ =\ 0x2003;}
+\DoxyCodeLine{00246\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterVendorName\ =\ 0x2004;}
+\DoxyCodeLine{00247\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterProductName\ =\ 0x2014;}
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterSerialNumber\ =\ 0x2024;}
+\DoxyCodeLine{00249\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterProductionDate\ =\ 0x2034;}
+\DoxyCodeLine{00250\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ RegisterRelaisConfiguration[3]\ =\ \{0x1000,0x1020,0x1040\};}
+\DoxyCodeLine{00251\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterRelaisCount\ =\ 0x1204;}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \textcolor{comment}{//\ Configuration\ Information}}
+\DoxyCodeLine{00254\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterTemperatureMinValue\ =\ 0x1209;}
+\DoxyCodeLine{00255\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterTemperatureMaxValue\ =\ 0x120A;}
+\DoxyCodeLine{00256\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterTemperatureNominalValue\ =\ 0x120B;}
+\DoxyCodeLine{00257\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterPowerNominalValue\ =\ 0x1300;}
+\DoxyCodeLine{00258\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterHomeTotalPower\ =\ 0x1301;}
+\DoxyCodeLine{00259\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterUserTemperatureNominal\ =\ 0x1407;}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \textcolor{comment}{//Operating\ Information}}
+\DoxyCodeLine{00262\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterRestartCounter\ =\ 0x1202;}
+\DoxyCodeLine{00263\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterActualTemperaturePCB\ =\ 0x1205;}
+\DoxyCodeLine{00264\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterTotalOperatingSeconds\ =\ 0x1400;}
+\DoxyCodeLine{00265\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterErrorCounter\ =\ 0x1402;}
+\DoxyCodeLine{00266\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterActualTemperatureBoiler\ =\ 0x1404;}
+\DoxyCodeLine{00267\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterActualTemperaturExternalSensor1\ =\ 0x1405;}
+\DoxyCodeLine{00268\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterActualTemperaturExternalSensor2\ =\ 0x1406;}
+\DoxyCodeLine{00269\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint16\_t\ RegisterRelaisStatus\ =\ 0x1408;}
+\DoxyCodeLine{00270\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ RegisterRelaisOperatingTime[3]\ =\ \{0x1409,0x140B,0x140D\};}
+\DoxyCodeLine{00271\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ RegisterErrorData[10]\ =\ \{0x1500,0x1504,0x1508,0x150C,0x1510,0x1514,0x1518,0x151C,0x1520,0x1524\};}
+\DoxyCodeLine{00272\ \};}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//EGO\_SH\_RS485\_h}}
+
+\end{DoxyCode}
