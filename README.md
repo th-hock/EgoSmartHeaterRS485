@@ -1,5 +1,5 @@
 # EgoSmartHeaterRS485
-[![license](https://img.shields.io/github/license/th-hock/EgoSmartHeaterRS485.svg)][license]
+[license](https://img.shields.io/github/license/th-hock/EgoSmartHeaterRS485.svg)][license]
 
 
 ## Overview
