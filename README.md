@@ -19,9 +19,9 @@ Please refer to the [Assembly und User manual](https://github.com/th-hock/EgoSma
 The [protocol description](https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/extras/Protocol%2090.60034.744_001_1.pdf) document contains a description of all the registers.
 
 Some important functions:
-- setPowerNominalValue: Activate the heater in manual mode, to switch it to a specific power consumption.
-- setHomeTotalPower: Activate the heater in automatic mode. Provide the current metering value of a two-way meter. Negative values will cause the heater to be turned on.
-- getRelaisStatus: Get current power consumption. Multiply the Relais-Status value by 500 to get the current power consumption of the heater.
+- **setPowerNominalValue**: Activate the heater in manual mode, to switch it to a specific power consumption.
+- **setHomeTotalPower**: Activate the heater in automatic mode. Provide the current metering value of a two-way meter. Negative values will cause the heater to be turned on.
+- **getRelaisStatus**: Get current power consumption. Multiply the Relais-Status value by 500 to get the current power consumption of the heater.
 
 Renew the activation at least every 60 seconds. Otherwise the heater is automatically turned off.
 
@@ -34,8 +34,12 @@ Refer to Arduino Tutorials > Libraries [Manual Installation](https://www.arduino
 
 ## Hardware
 
-This library has been tested with an Arduino [NodeMCU ESP8266](https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet) controller, connected via RS485 using a MAX485 [MAX485](https://microcontrollerslab.com/rs485-serial-communication-esp32-esp8266-tutorial/) transceiver.
+This library has been tested with an Arduino [NodeMCU ESP8266](https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet) controller, connected via RS485 using a MAX485 [MAX485](https://microcontrollerslab.com/rs485-serial-communication-esp32-esp8266-tutorial/) transceiver. The transceiver is connected via software serial library.
 
+### Wiring
+
+The following image shows the wiring schema of the ESP8266 example. Other PINs might be used, but not all of the ESP I/O PINs will be usable for all purposes.
+![esp8266_max485](https://user-images.githubusercontent.com/81650966/224537809-a8d09a4f-675d-4624-9469-216af9e032ad.png)
 
 ## Example
 
