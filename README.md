@@ -46,7 +46,7 @@ The following image shows the wiring schema of the ESP8266 example. Other PINs m
 Please be aware, that a shielded cable is recommended to connect to the RS485 interface. Shielding must be unilaterally contacted (either on the EGO Smart Heater or on the control end only).
 
 ### Testing RS485 communication
-The Smart Heater must only be be turned on, if installed in a container filled with liquid. However to test the RS485 communication it is sufficient to wire the device (enegery as well as communication) and power it up while the rotary operating mode selector is in OFF position. Reading registers is possible in this mode but the device cannot be activated.
+The Smart Heater must only be be turned on, if installed in a container filled with liquid. However to test the RS485 communication it is sufficient to wire the device (energy as well as communication) and power it up while the rotary operating mode selector is in OFF position. Reading registers is possible in this mode but the device cannot be activated.
 
 ## Example
 
@@ -55,7 +55,7 @@ The library contains a sketch that demonstrates how to use the library with an E
 
 ## Documentation
 
-The library is documented by a [Doxygen documentation](https://htmlpreview.github.io/?https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/doc/). Please download the library and view the /html/index.html file.
+The library is documented by a [Doxygen documentation](https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/doc/). Please download the library and view the /html/index.html file.
 
 
 ## Support
