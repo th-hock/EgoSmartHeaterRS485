@@ -43,7 +43,7 @@ The following image shows the wiring schema of the ESP8266 example. Other PINs m
 
 ## Example
 
-The library contains a sketche that demonstrate use of the library. You can find these in the [examples](https://github.com/th-hock/EgoSmartHeaterRS485/tree/main/examples/) folder.
+The library contains a sketch that demonstrates how to use the library with an ESP8266 controller and a MAX485 transceiver. You can find it in the [examples](https://github.com/th-hock/EgoSmartHeaterRS485/tree/main/examples/) folder.
 
 
 ## Documentation
