@@ -16,9 +16,10 @@ The power of the EGO Smart Heater can be adjusted within the range 0W to 3500W i
 ## Features
 
 Please refer to the [Assembly und User manual](https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/extras/smart_heater.pdf).  
-The [protocol description](https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/extras/Protocol%2090.60034.744_001_1.pdf) document contains a description of all the registers.  
+The [protocol description](https://github.com/th-hock/EgoSmartHeaterRS485/blob/main/extras/Protocol%2090.60034.744_001_1.pdf) document contains a description of all the registers.
+
 Some important functions:
-- setPowerNominalValue: Activate the heater in manual mode, to switch ich to a specific power consumption.
+- setPowerNominalValue: Activate the heater in manual mode, to switch it to a specific power consumption.
 - setHomeTotalPower: Activate the heater in automatic mode. Provide the current metering value of a two-way meter. Negative values will cause the heater to be turned on.
 - getRelaisStatus: Get current power consumption. Multiply the Relais-Status value by 500 to get the current power consumption of the heater.
 
