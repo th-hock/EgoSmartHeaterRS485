@@ -28,13 +28,6 @@ Some important library functions:
 
 Renew the activation at least every 60 seconds. Otherwise the heater is automatically turned off.
 
-## Installation
-
-### Manual
-
-Refer to Arduino Tutorials > Libraries [Manual Installation](https://www.arduino.cc/en/Guide/Libraries#toc5).
-
-
 ## Hardware
 
 This library has been tested with an Arduino [NodeMCU ESP8266](https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet) controller, connected via RS485 using a MAX485 [MAX485](https://microcontrollerslab.com/rs485-serial-communication-esp32-esp8266-tutorial/) transceiver. The transceiver is connected via software serial library.
@@ -47,6 +40,12 @@ Please be aware, that a shielded cable is recommended to connect to the RS485 in
 
 ### Testing RS485 communication
 The Smart Heater must only be be turned on, if installed in a container filled with liquid. However to test the RS485 communication it is sufficient to wire the device (energy as well as communication) and power it up while the rotary operating mode selector is in OFF position. Reading registers is possible in this mode but the device cannot be activated.
+
+## Installation
+
+### Manual
+
+To install the library please refer to Arduino Tutorials > Libraries [Manual Installation](https://www.arduino.cc/en/Guide/Libraries#toc5).
 
 ## Example
 
