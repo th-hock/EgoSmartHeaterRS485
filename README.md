@@ -31,7 +31,7 @@ Renew the activation at least every 60 seconds. Otherwise the heater is automati
 ## Hardware
 
 This library has been tested with an Arduino [NodeMCU ESP8266](https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet) controller, connected via RS485 using a MAX485 [MAX485](https://microcontrollerslab.com/rs485-serial-communication-esp32-esp8266-tutorial/) transceiver. The transceiver is connected via software serial library.  
-However, as far as I can see, there is no hardware dependency. Therefore I expect `EgoSmartHeaterRS485` to work with other Arduino devices as well. Other tranceiver board might require code changes.
+However, as far as I can see, there is no hardware dependency. Therefore I expect `EgoSmartHeaterRS485` to work with other Arduino devices as well. Other tranceiver boards might require code changes.
 
 ### Wiring
 
