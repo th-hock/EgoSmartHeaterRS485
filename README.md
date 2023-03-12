@@ -63,6 +63,6 @@ Please [submit an issue](https://github.com/th-hock/EgoSmartHeaterRS485/issues) 
 
 ## Dependencies and References
 
-The Smart Heater library depends on 4-20ma's [ModbusMaster] (https://github.com/4-20ma/ModbusMaster) library which is used for the RS485/Modbus RTU communication. Please refer to this repository in case of detailed questions regarding the serial communication.
+The Smart Heater library depends on 4-20ma's [ModbusMaster](https://github.com/4-20ma/ModbusMaster) library which is used for the RS485/Modbus RTU communication. Please refer to this repository in case of detailed questions regarding the serial communication.
 
-Tribute to CSchoch whose [Library for reading ORNO WE Modbus Energy meters] (https://github.com/CSchoch/OR_WE_Energy_Meter) was used as a blueprint for the implementation of this library. Such an energy meter might be used for example to measure the real consumption of the heater, instead of estimating it based on the RelaisStatus register value.
+Tribute to CSchoch whose [Library for reading ORNO WE Modbus Energy meters](https://github.com/CSchoch/OR_WE_Energy_Meter) was used as a blueprint for the implementation of this library. Such an energy meter might be used for example to measure the real consumption of the heater, instead of estimating it based on the RelaisStatus register value.
