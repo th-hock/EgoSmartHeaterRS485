@@ -45,16 +45,10 @@ void setup() {
 void loop() {
   // switch the heater to 500W consumption
   Heater.setPowerNominalValue(500);
-  // wait 15 seconds and renew the power nominal value setting
+  // wait 30 seconds and renew the power nominal value setting
   // if it is not renewed within 60 seconds the heater is automatically turned off  
   Serial.println("Heater switched to 500W");
   Serial.print("Relais Status: ");
   Serial.println(Heater.getRelaisStatus());
   delay(30000);
-/*  Heater.setPowerNominalValue(1000);
-  Serial.println("Heater switched to 1000W");
-  delay(30000);
-  Heater.setPowerNominalValue(0);
-  Serial.println("Heater switched off");
-  delay(240000);*/
 }
